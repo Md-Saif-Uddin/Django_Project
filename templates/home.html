@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+
+        {% include 'navbar.html' %}
+
+        <h1>
+            This is our Home page
+        </h1>
+
+        <form action="/" method="POST">
+            {% csrf_token %}
+            <input type="checkbox" name="check">
+            <button>send</button>
+        </form>
+
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel impedit, amet delectus illo nihil excepturi necessitatibus est commodi beatae. Autem aut voluptatum voluptatem ab quibusdam accusantium fuga, expedita minima unde perspiciatis, porro pariatur nihil aspernatur eaque, distinctio nobis amet at eveniet minus cum omnis optio assumenda incidunt. Aliquam, laboriosam natus?</p>
+        
+        <!-- Accessing dynamic values which come from views.py -->
+        <!-- below div will only visible when isActive gives true else not visible  in page -->
+        {% if isActive %}
+        <div>
+            <h1>Todays date is {{date}}</h1>
+            <h1>Name is {{name}}</h1>
+            <hr>
+            <h1>Student Data</h1>
+            <h2>Student Name : {{student.name}}</h2>
+            <h2>Student College : {{student.college}}</h2>
+            <h2>Student City : {{student.city}}</h2>
+        </div>
+        {% endif %}
+
+        {% for value in list_of_program %}
+            <h3>{{value}}</h3>
+        {% endfor %}
+
+        <button>
+            Contact us
+        </button>
+    </div>
+</body>
+</html>
